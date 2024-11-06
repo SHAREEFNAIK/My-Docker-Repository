@@ -1,0 +1,35 @@
+# port details
+server:
+ port: 9095		
+#Application Name
+spring:
+   application:
+     name: JRTP-CorrespondenceService
+# data source properties
+   datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///jrtp123db
+      username: root  
+      password: root123
+#jpa properties
+   jpa:
+    show-sql: true
+    hibernate:
+     ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+# mail properties
+   mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gugulothsagarnaik01@gmail.com
+    password: naikGMAIL@456
+    properties:
+      mail:
+        transport:
+         protocol: smtp
+        smtp:
+          port: 587
+          auth: true
+          starttls:
+             enable: true
+             required: true
