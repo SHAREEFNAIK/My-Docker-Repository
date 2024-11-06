@@ -1,0 +1,29 @@
+server:
+ port: 9096
+spring:
+  application:
+    name: JRTP-AdminAPIService
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///jrtp123db
+    username: root
+    password: root123
+  jpa:
+   show-sql: true
+   hibernate:
+      ddl-auto: update
+   database-platform: org.hibernate.dialect.MySQL8Dialect
+
+plan:
+ module:
+  messeges: 
+    save-success: Travel plan saved with id value
+    save-failure: Travel plan not saved with Id
+    update-success: Travel plan updated
+    update-failure: Travel plan not found for 
+    delete-success: Plan Deleted with plan Id
+    delete-failure: plan not found for deletion
+    status-change-success: Travel plan status has been changed
+    status-change-failure: Travel plan not for status change
+    find-by-id-failure: Travel plan not found 
+
