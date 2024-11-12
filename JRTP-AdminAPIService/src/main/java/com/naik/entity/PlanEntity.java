@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="JRTP_PLAN_MASTER")
+@Table(name="JRTP_PLAN_ENTITY")
 public class PlanEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

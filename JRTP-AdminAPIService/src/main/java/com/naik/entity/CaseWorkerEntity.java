@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "JRTP_CASE_WORKER_ACCOUNT")
+@Table(name = "JRTP_CASE_WORKERS_ENTITY")
 @Data
 public class CaseWorkerEntity {
 	@Id
