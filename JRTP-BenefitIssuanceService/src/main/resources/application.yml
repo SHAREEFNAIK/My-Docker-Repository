@@ -11,20 +11,3 @@ spring:
     batch:
     job:
       enabled: false
-# data source properties
-   datasource:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql:///jrtp123db
-      username: root  
-      password: root123
-#jpa properties
-   jpa:
-    show-sql: true
-    hibernate:
-     ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-#register with eureka server
-eureka:
-  client:
-    service-url:
-       default-zone: http://localhost:8761/eureka
