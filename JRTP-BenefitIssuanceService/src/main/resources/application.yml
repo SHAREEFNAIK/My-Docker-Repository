@@ -1,0 +1,25 @@
+
+server:
+ port: 9097
+#Application Name
+spring:
+   application:
+     name: JRTP-BenefitIssuanceService
+   batch:
+    jdbc:
+      initialize-schema: always
+    batch:
+    job:
+      enabled: false
+# data source properties
+   datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///jrtp123db
+      username: root  
+      password: root123
+#jpa properties
+   jpa:
+    show-sql: true
+    hibernate:
+     ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect

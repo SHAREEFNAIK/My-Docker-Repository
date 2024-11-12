@@ -1,6 +1,6 @@
 # port details
 server:
- port: 9095		
+ port: 9096		
 #Application Name
 spring:
    application:
