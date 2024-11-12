@@ -29,7 +29,7 @@ public class SsnOperationController {
 				stateName= "Ohio";
 		
 				else if(stateCode==03)
-					stateName= "newYork";
+					stateName= "NewYork";
 					
 					else if(stateCode==04)
 						stateName= "California";

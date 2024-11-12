@@ -15,7 +15,7 @@ public class emailUtils {
 
 	@Autowired
 	private JavaMailSender sender;
-	public void sendmailS(String toMail,String subject, String Body,File file) throws Exception {
+	public void sendmails(String toMail,String subject, String Body,File file) throws Exception {
 		MimeMessage message = sender.createMimeMessage();
 		MimeMessageHelper helper =new MimeMessageHelper(message, true);
 		helper.setTo(toMail);

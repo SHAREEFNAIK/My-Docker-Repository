@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ExecutorCompletionService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,23 +44,29 @@ public class CorespondenceServiceMgmtImpl implements ICorespondenceServiceMgmt{
 	@Autowired
 	private IAppRegisterRepository appRepo;
 	@Autowired
-	private emailUtils mailutil;
+	private emailUtils mailUtil;
+	Integer successTriggers=0;
+	Integer pendingTriggers=0;
 	
 	@Override
 	public CoSummery processPendingTriggers() {
 		ApplicationRegistrationEntity appEntity=null;
 		EligibilityDetailsEntity elgiEntity=null;
-		Integer successTriggers=0;
-		Integer pendingTriggers=0;
+		
 		// get all pending triggers
 		List<CoTriggerEntity> triggerList= triggerRepo.findByTriggerStatus("pending");
-		// prepare cosummery report
-		CoSummery summery = new CoSummery();
-		summery.setTotalTriggers(triggerList.size());
 		
-		//process each pending trigger
+		  // prepare cosummery report
+		  CoSummery summery = new CoSummery();
+		  summery.setTotalTriggers(triggerList.size());
+		 //process pending trigger in multi threaded env..using executor framework
+		  ExecutorService executorService= Executors.newFixedThreadPool(10);
+		  ExecutorCompletionService<Object> pool=new ExecutorCompletionService<Object>(executorService);
+		
+		//process each pending trigger 
 		for(CoTriggerEntity triggerEntity:triggerList) {
-			try {
+			pool.submit(()-> {
+				try {
 				processTrigger(summery,triggerEntity);
 				successTriggers++;
 			}
@@ -65,11 +74,13 @@ public class CorespondenceServiceMgmtImpl implements ICorespondenceServiceMgmt{
 				e.printStackTrace();
 				pendingTriggers++;
 			}
-		}
+			return null;
+		});
+		}//for
 		summery.setPendingTriggers(pendingTriggers);
 		summery.setSuccessTriggers(successTriggers);
 		
-		return null;
+		return summery;
 	}// process pending trigger method
 	
 	private ApplicationRegistrationEntity processTrigger(CoSummery summery,CoTriggerEntity triggerEntity) throws Exception {
@@ -88,7 +99,7 @@ public class CorespondenceServiceMgmtImpl implements ICorespondenceServiceMgmt{
 				appEntity= optAppEntity.get();
 			}
 		}
-		// generate pdf doc and send that pdf doc to email
+		// generate pdf doc having elgibility Details and send that pdf doc to email
 		generatePdfAndSendMail(elgiEntity,appEntity);
 		return appEntity;	
 	}// process trigger method
@@ -176,7 +187,7 @@ public class CorespondenceServiceMgmtImpl implements ICorespondenceServiceMgmt{
 					 // send the generated pdf doc as email message
 					 String subject="plan Approval/Denial mail";
 					 String body= " Hello Mr/Miss/Mrs."+appEntity.getFullName()+",This mail contains Complete Details Plan approval/Denial";
-					 mailutil.sendmailS(appEntity.getEmail(), subject, body, file);
+					 mailUtil.sendmails(appEntity.getEmail(), subject, body, file);
 					 // update Co trigger table
 					 updateCotrigger(elgiEntity.getCaseNo(),file);
 					 

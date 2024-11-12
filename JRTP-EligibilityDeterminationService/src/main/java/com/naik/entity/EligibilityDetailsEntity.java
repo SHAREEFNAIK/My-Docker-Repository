@@ -34,5 +34,8 @@ public class EligibilityDetailsEntity {
 	private Integer benefitAmount;
 	@Column(length=40)
 	private String denialReason;
+	@Column(length=40)
+	private String bankName;
+	private int accountNumber;
 
 }

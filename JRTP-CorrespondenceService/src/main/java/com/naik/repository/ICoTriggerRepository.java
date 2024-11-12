@@ -8,7 +8,7 @@ import com.naik.entity.CoTriggerEntity;
 
 public interface ICoTriggerRepository extends JpaRepository<CoTriggerEntity, Integer> {
 
-	List<CoTriggerEntity> findByTriggerStatus(String string);
+	List<CoTriggerEntity> findByTriggerStatus(String CoTriggerStatus);
 
 	public CoTriggerEntity findByCaseNo(Integer caseNo);
 

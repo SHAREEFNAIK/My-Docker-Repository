@@ -1,0 +1,21 @@
+
+server:
+ port: 9092 
+application:
+  name: JRTP-ApplicationRegistrationService
+spring:
+  datasource:
+       driver-class-name: com.mysql.cj.jdbc.Driver
+       url: jdbc:mysql:///jrtp123db
+       username: root  
+       password: root123
+ #jpa properties
+  jpa:
+     show-sql: true
+     hibernate:
+      ddl-auto: update
+     database-platform: org.hibernate.dialect.MySQL8Dialect
+ar:
+ ssn-web:
+   url: http://localhost:9091/ssn-api/find/{ssn}
+ state : California
