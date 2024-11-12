@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="JRTP_EDUCATION_ENTITY")
+@Table(name="JRTP_INCOME_ENTITY")
 @Data
 public class DcIncomeEntity {
 

@@ -34,7 +34,7 @@ public class DataCollectionOperationController {
 		return new ResponseEntity<List<String>>(planNames,HttpStatus.OK);
 	}
 	
-	@PostMapping("/caseNo/{appId}")
+	@PostMapping("/generateCaseNo/{appId}")
 	public ResponseEntity<Integer> generateCaseNumber(@PathVariable Integer appId){
 		Integer caseNumber = dcService.generateCaseNumber(appId);
 		return new ResponseEntity<Integer>(caseNumber,HttpStatus.CREATED);
@@ -64,7 +64,7 @@ public class DataCollectionOperationController {
 		return new ResponseEntity<Integer>(result,HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/report/{caseNo}")
+	@PostMapping("/generateReport/{caseNo}")
 	public ResponseEntity<DcSummaryReport> generateReport(@PathVariable Integer CaseNo){
 		DcSummaryReport report= dcService.showReport(CaseNo);
 		return new ResponseEntity<DcSummaryReport>(report,HttpStatus.OK);
