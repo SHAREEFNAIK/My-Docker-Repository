@@ -1,0 +1,13 @@
+server:
+   port: 8888
+spring:
+  application:
+    name: JRTP-ConfigServer
+  cloud:
+    config:
+      server:
+        bootstrap: false
+        git:
+          clone-on-start: true
+          skip-ssl-validation: true
+          uri: https://gitlab.com/com.nt4/jrtp-proj-gitlab.git
