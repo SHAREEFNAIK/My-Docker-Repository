@@ -104,7 +104,7 @@ public class EligibilityDeterminationServiceImpl implements IEligibilityDetermin
 			// save CO Trigger object
 			CoTriggerEntity triggerEntity= new CoTriggerEntity();
 			triggerEntity.setCaseNo(caseNo);
-			triggerEntity.setCoTriggerState("pending");
+			triggerEntity.setCoTriggerStatus("pending");
 			triggerRepo.save(triggerEntity);
 			
 		return elgiOutput;
