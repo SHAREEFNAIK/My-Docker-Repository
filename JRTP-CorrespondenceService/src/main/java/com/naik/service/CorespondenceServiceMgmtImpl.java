@@ -54,7 +54,7 @@ public class CorespondenceServiceMgmtImpl implements ICorespondenceServiceMgmt{
 		EligibilityDetailsEntity elgiEntity=null;
 		
 		// get all pending triggers
-		List<CoTriggerEntity> triggerList= triggerRepo.findByTriggerStatus("pending");
+		List<CoTriggerEntity> triggerList= triggerRepo.findByCoTriggerStatus("pending");
 		
 		  // prepare cosummery report
 		  CoSummery summery = new CoSummery();

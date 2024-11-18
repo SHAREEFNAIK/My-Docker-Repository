@@ -20,7 +20,7 @@ public class EligibilityDetailsEntity {
 	private Integer edTraceId;
 	
 	private Integer caseNo;
-	private Integer holderSSN;
+	private long holderSSN;
 	
 	@Column(length=40)
 	private String holderName;
@@ -34,5 +34,8 @@ public class EligibilityDetailsEntity {
 	private Integer benefitAmount;
 	@Column(length=40)
 	private String denialReason;
+	@Column(length=40)
+	private String bankName;
+	private int accountNumber;
 
 }

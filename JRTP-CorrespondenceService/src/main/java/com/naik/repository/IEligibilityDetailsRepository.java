@@ -6,6 +6,6 @@ import com.naik.entity.EligibilityDetailsEntity;
 
 public interface IEligibilityDetailsRepository extends JpaRepository<EligibilityDetailsEntity, Integer> {
 
-	public EligibilityDetailsEntity findByCaseNo(Integer caseNo);
+	public  EligibilityDetailsEntity findByCaseNo(Integer caseNo);
 
 }

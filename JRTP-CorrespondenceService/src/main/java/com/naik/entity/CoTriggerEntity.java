@@ -1,5 +1,6 @@
 package com.naik.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +20,9 @@ public class CoTriggerEntity {
 	private Integer caseNo;
 	@Lob
 	private byte[] coNoticePdf;
-	private String CoTriggerStatus="pending";
+	@Column(length = 30)
+	private String coTriggerStatus="pending";
+	
 	
 	
 

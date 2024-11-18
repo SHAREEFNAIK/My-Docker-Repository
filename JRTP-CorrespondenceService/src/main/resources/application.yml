@@ -5,18 +5,7 @@ server:
 spring:
    application:
      name: JRTP-CorrespondenceService
-# data source properties
-   datasource:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql:///jrtp123db
-      username: root  
-      password: root123
-#jpa properties
-   jpa:
-    show-sql: true
-    hibernate:
-     ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+
 # mail properties
    mail:
     host: smtp.gmail.com
@@ -32,9 +21,5 @@ spring:
           auth: true
           starttls:
              enable: true
-             required: true
- #register with eureka server
-eureka:
- client:
-   service-url:
-      default-zone: http://localhost:8761/eureka						 	 
+             required: true	 
+  
