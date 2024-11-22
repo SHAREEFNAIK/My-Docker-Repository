@@ -1,12 +1,39 @@
-
+# port no
 server:
  port: 9092 
 
 spring:
   application:
     name: JRTP-ApplicationRegistrationService
-  
+#config server
+  config:
+   import: optional:configserver:http://localhost:8888
+# Admin Server properties
+  boot:
+   Admin:
+    client:
+     url: http://localhost:9999
+# eureka server properties
+eureka:
+   client:
+    service-url:
+     default-zone: http://localhost:8761/eureka
+
+# @value properties
 ar:
  ssn-web:
-   url: http://localhost:9091/ssn-api/find/{ssn}
+     url: http://localhost:9091/ssn-api/find/{ssn}
  state : California
+ 
+ # Actuator properties
+ management:
+  endpoint:
+   env:
+    enabled: true
+    show-values: always
+   health:
+    show-details: always
+  endpoints:
+   web:
+    exposure:
+     include: '*' 

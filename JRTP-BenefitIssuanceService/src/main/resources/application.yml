@@ -5,9 +5,35 @@ server:
 spring:
    application:
      name: JRTP-BenefitIssuanceService
+#Batch properties
    batch:
     jdbc:
       initialize-schema: always
-    batch:
     job:
       enabled: false
+#config server
+   config:
+     import: optional:configserver:http://localhost:8888
+# Admin Server properties
+   boot:
+    Admin:
+     client:
+      url: http://localhost:9999
+# eureka server properties
+eureka:
+ client:
+  ervice-url:
+   default-zone: http://localhost:8761/eureka			
+
+# Actuators properties
+management:
+  endpoint:
+   env:
+     enabled: true
+     show-values: always
+   health:
+    show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*' 

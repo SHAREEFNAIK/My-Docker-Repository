@@ -5,6 +5,19 @@ server:
 spring:
    application:
      name: JRTP-CorrespondenceService
+#config server
+   config:
+    import: optional:configserver:http://localhost:8888
+# Admin Server properties
+   boot:
+     Admin:
+       client:
+         url: http://localhost:9999
+# eureka server properties
+eureka:
+ client:
+  service-url:
+   default-zone: http://localhost:8761/eureka
 
 # mail properties
    mail:
@@ -22,4 +35,15 @@ spring:
           starttls:
              enable: true
              required: true	 
-  
+#actuators properties
+management:
+  endpoint:
+   env:
+    enabled: true
+    show-values: always
+   health:
+    show-details: always
+  endpoints:
+    web:
+     exposure:
+       include: '*'  

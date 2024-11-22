@@ -20,12 +20,10 @@ public class AppRegistrationOperationController {
 	
 	@PostMapping("/save")
 	public ResponseEntity<String> saveCitizenApplication(AppRegistrationInputs inputs) throws Exception{
-		int a=10;
-		System.out.println("===== a:==="+a);
+		
 		
 		Integer id= appService.registerCitizenApplication(inputs);
-		System.out.println("****** Register citizen app mtd is called******");
-		 return new ResponseEntity<String>("citizen application saved with id:"+id,HttpStatus.CREATED);
+		return new ResponseEntity<String>("citizen application saved with id:"+id,HttpStatus.CREATED);
 		 
 	}
 
